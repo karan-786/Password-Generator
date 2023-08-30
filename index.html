@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Pasword Gentretor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+<div class="container">
+    <h1>Generate  a <br><span>Random Passsword</span></h1>
+    <div class="display">
+        <input type="text" id="passsword" placeholder="passsword">
+        <img src="img/copy.png"  onclick="copyPassword()">
+    </div>
+    <button onclick="createPassword()"><img src="img/generate.png" alt=""> Generate Passsword</button>
+</div>
+
+<script>
+    const passwordBox = document.getElementById("passsword");
+const length  = 12;
+
+
+
+const upperCase= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const lowerCase ="abcdefghijklmnopqrstuvwxyz";
+const number = "0123456789";
+const symbol = "!@#$%^&*()_+~|}{[]><?/-=";
+
+const allChars = upperCase + lowerCase + number + symbol;
+
+function createPassword (){
+    let passsword = "";
+    passsword += upperCase[Math.floor(Math.random() * upperCase.length)];
+    passsword += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+    passsword += number[Math.floor(Math.random() * number.length)];
+    passsword += symbol[Math.floor(Math.random() * symbol.length)];
+
+    while (length >passsword.length) {
+        passsword += allChars[Math.floor(Math.random() * allChars.length)];
+    }
+
+    passwordBox.value = passsword;
+}
+
+
+function copyPassword (){
+    passwordBox.select();
+    document.execCommand("copy");
+}
+
+</script>
+    
+    
+    
+
+</body>
+</html>
